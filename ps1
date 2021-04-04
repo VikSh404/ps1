@@ -46,12 +46,12 @@ local SH='\[\e[0;30;44m\]'
 local arrow=$(echo -en '\ue0b0')
 
     if [ $EXIT != 0 ]; then
-  PS1+="[$(date +%H:%M:%S)] ${Red}$(echo -en 'ER')${RCol}"
+  PS1+="[$(date +%H:%M:%S)] <${Red}$(echo -en 'ER')${RCol}> "
   PS1+="\W\$ "
     else
         
         
-  PS1+="[$(date +%H:%M:%S)] ${Gre}$(echo -en 'OK')${RCol}"
+  PS1+="[$(date +%H:%M:%S)] <${Gre}$(echo -en 'OK')${RCol}> "
   PS1+="\W\$ "
     fi
 
