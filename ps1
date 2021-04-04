@@ -1,3 +1,8 @@
+#PS1='$ '
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export SUDO_PS1='[$(date +%H:%M:%S)] \W \u\$ '
+
+
 
 PROMPT_COMMAND=__prompt_command
 
@@ -15,7 +20,7 @@ echo ""
 }
 __prompt_command() {
 local EXIT="$?"
-PS1=""
+export PS1=""
 local RCol='\[\e[0m\]'
 local Red='\[\e[0;31m\]'
 local Gre='\[\e[0;32m\]'
@@ -41,22 +46,17 @@ local SH='\[\e[0;30;44m\]'
 local arrow=$(echo -en '\ue0b0')
 
     if [ $EXIT != 0 ]; then
-  PS1+="${StartErr}$(echo -en '\u2718')${EE}${arrow}${RCol}"     
-  PS_NOMBER_OF_ERROR="${BonR}${EXIT}${EE}${RonB}${arrow}${RCol}"
-  PS1+="${SU}\u${EU}${arrow}${ST}\t ${SH}\h \W$ ${End}${WonR}${arrow}${RCol}${PS_NOMBER_OF_ERROR} "
+  PS1+="[$(date +%H:%M:%S)] ${Red}$(echo -en 'ER')${RCol}"
+  PS1+="\W\$ "
     else
-	
-	
-  PS1+="${StartGood}$(echo -en '\u2716')${EE}${arrow}${RCol}"
-  PS_NOMBER_OF_ERROR=''
-  PS1+="${SU}\u${EU}${arrow}${ST}\t ${SH}\h \W$ ${End}${arrow}${RCol}${PS_NOMBER_OF_ERROR} "
+        
+        
+  PS1+="[$(date +%H:%M:%S)] ${Gre}$(echo -en 'OK')${RCol}"
+  PS1+="\W\$ "
     fi
 
 
 #> $(printf '\xE2\x98\xA0')$(echo -en '\u25B6')
     
 }
-
-
-
 
